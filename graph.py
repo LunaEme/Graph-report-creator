@@ -4,7 +4,7 @@ import plotly_express as px     # py -m pip install plotly-express kaleido
 from fpdf import FPDF           # py -m pip install fpdf1
 import sqlite3
 from pathlib import Path
-
+import os
 
 current_dir = Path.cwd()
 db_path =  current_dir / "sales_dept.db"
@@ -88,3 +88,6 @@ for graph_file in graph_files:
 
 
 pdf.output(current_dir / 'output/Sales report.pdf', dest='F')
+
+for file in current_dir.glob('output/*.jpg'):
+    os.remove(file)
